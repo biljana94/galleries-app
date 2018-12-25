@@ -3,13 +3,15 @@ import VueRouter from 'vue-router';
 
 import Login from './components/auth/Login.vue';
 import AllGalleries from './components/AllGalleries.vue';
+import Register from './components/auth/Register.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
     { path: '/', redirect: '/all-galleries' },
-    { path: '/all-galleries', component: AllGalleries, name: 'all-galleries', meta: { auth: true } },
+    { path: '/all-galleries', component: AllGalleries, name: 'all-galleries' },
     { path: '/login', component: Login, name: 'login', meta: { guest: true } },
+    { path: '/register', component: Register, name: 'register', meta: { guest: true } },
 ];
 
 const router = new VueRouter({

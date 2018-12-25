@@ -3,7 +3,10 @@ import http from './http-service.js';
 class AuthService {
     login(email, password) {
         return http.post('auth/login', { email, password }) //{ email, password } - BODY
-            .then(({data}) => data);
+            .then(({ data }) => {
+                this.setLoginData(data);
+                return data;
+            });
     }
 
     setAuthHeaders(token) {
@@ -16,6 +19,34 @@ class AuthService {
         //setovali smo token u axios u samim headerima
         http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
+
+    //ovde sam raspakovala usera i u store-u mogu da ga koristim kao user
+    register({ 
+        first_name, 
+        last_name, 
+        email, password, 
+        password_confirmation, 
+        conditions }) {
+        return http.post('auth/register', { 
+            first_name, 
+            last_name, 
+            email, 
+            password, 
+            password_confirmation, 
+            conditions 
+            })
+            .then(({ data }) => {
+                this.setLoginData(data);
+                return data;
+            });
+    }
+
+    //logovanje korisnika automatski po registraciji i ako je ulogovan a ne izloguje se onda da ostane ulogovan
+    setLoginData(data) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        this.setAuthHeaders(data.token);
+    }
 }
 
 //ako je korisnik vec ulogovan, tj ako vec imamo token
@@ -27,6 +58,5 @@ const checkForToken = (authService) => {
 };
 
 const authService = new AuthService();
-export default authService;
-
 checkForToken(authService);
+export default authService;

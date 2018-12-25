@@ -1,16 +1,31 @@
 <template>
     
 
-    <form class="form-signin" @submit.prevent="onSubmitForm">
+    <form @submit.prevent="onSubmitForm">
         <h1 class="h3 mb-3 font-weight-normal">Please log in</h1>
 
-        <label class="sr-only">Email address</label>
-        <input type="text" class="form-control" placeholder="Email address" autofocus="" v-model="email">
+        <div class="form-group">
+            <label>Email</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Enter email" 
+                autofocus="" 
+                v-model="email"
+            >
+        </div>
 
-        <label class="sr-only">Password</label>
-        <input type="password" class="form-control" placeholder="Password" v-model="password">
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+        <div class="form-group">
+            <label>Password</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                placeholder="Enter password" 
+                v-model="password"
+            >
+        </div>
+        
+        <button class="btn btn-dark" type="submit">Log in</button>
     </form>
 
 

@@ -14,6 +14,10 @@ export default {
         user: getUserFromLocalStorage(),
         token: localStorage.getItem('token'), //uzimamo token iz localStorage
         errors: null,
+        // first_name: '',
+        // last_name: '',
+        // email: '',
+        // password: ''
     },
 
     mutations: {
@@ -32,9 +36,6 @@ export default {
         async login({ commit }, { email, password }) {
             try {
                 const { user, token } = await authService.login(email, password);
-                localStorage.setItem('user', JSON.stringify(user)); //setujemo usera preko localStorage
-                localStorage.setItem('token', token); //setujemo token preko localStorage
-                authService.setAuthHeaders(token); //postavljamo headere tj token
                 commit('SET_DATA', { user, token });
                 router.push({ name: 'all-galleries' }); //redirektujemo korisnika
             } catch(error) {
@@ -48,6 +49,16 @@ export default {
             localStorage.removeItem('user');
             commit('SET_DATA', { user: null, token: null }); //postavljamo user i token na null
             router.push({ name: 'login' }); //redirektovanje
+        },
+
+        async register({ commit }, payload) {
+            try {
+                const { user, token } = await authService.register(payload);
+                commit('SET_DATA', { user, token });
+                router.push({ name: 'all-galleries' });
+            } catch(error) {
+                commit('SET_ERRORS', error.response);
+            }
         }
     },
 
