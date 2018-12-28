@@ -6,7 +6,11 @@ class AuthService {
             .then(({ data }) => {
                 this.setLoginData(data);
                 return data;
-            });
+            })
+            // .catch((error) => {
+            //     console.log(error.response.data.errors)
+            //     return error.response.data.errors; //hvatamo greske sa servera
+            // });
     }
 
     setAuthHeaders(token) {
@@ -38,7 +42,10 @@ class AuthService {
             .then(({ data }) => {
                 this.setLoginData(data);
                 return data;
-            });
+            })
+            // .catch((error) => {
+            //     return error.response.data.errors;
+            // });
     }
 
     //logovanje korisnika automatski po registraciji i ako je ulogovan a ne izloguje se onda da ostane ulogovan

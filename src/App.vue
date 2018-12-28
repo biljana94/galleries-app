@@ -22,7 +22,7 @@
 
 <script>
 
-import NavBar from './components/layout/NavBar.vue';
+import NavBar from './components/partials/NavBar.vue';
 
 export default {
   name: 'app',

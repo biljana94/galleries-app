@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-dark">Register</button>
         </form>
     </div>
 </template>
@@ -101,7 +101,7 @@ export default {
         ...mapActions(['register']),
 
         onSubmitRegister() {
-            console.log(this.user)
+            // console.log(this.user)
             this.register(this.user);
         }
     }

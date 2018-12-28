@@ -14,10 +14,6 @@ export default {
         user: getUserFromLocalStorage(),
         token: localStorage.getItem('token'), //uzimamo token iz localStorage
         errors: null,
-        // first_name: '',
-        // last_name: '',
-        // email: '',
-        // password: ''
     },
 
     mutations: {
@@ -37,7 +33,7 @@ export default {
             try {
                 const { user, token } = await authService.login(email, password);
                 commit('SET_DATA', { user, token });
-                router.push({ name: 'all-galleries' }); //redirektujemo korisnika
+                router.push({ name: 'galleries' }); //redirektujemo korisnika
             } catch(error) {
                 commit('SET_ERRORS', error.response);
             }
@@ -55,7 +51,7 @@ export default {
             try {
                 const { user, token } = await authService.register(payload);
                 commit('SET_DATA', { user, token });
-                router.push({ name: 'all-galleries' });
+                router.push({ name: 'galleries' });
             } catch(error) {
                 commit('SET_ERRORS', error.response);
             }

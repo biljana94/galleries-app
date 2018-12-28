@@ -13,6 +13,10 @@
                 autofocus="" 
                 v-model="email"
             >
+            <!--pomocu slotova menjamo errore u zavisnosti koji je, kreni od prvog errora, pa ako je dobar baci sledeci error-->
+            <!-- <form-error v-if="errors.email">
+                {{ errors.email[0] }}
+            </form-error> -->
         </div>
 
         <div class="form-group">
@@ -23,25 +27,31 @@
                 placeholder="Enter password" 
                 v-model="password"
             >
+            <!-- <form-error v-if="errors.password">
+                {{ errors.password[0] }}
+            </form-error> -->
         </div>
         
         <button class="btn btn-dark" type="submit">Log in</button>
     </form>
 
-
-
-
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
+import FormError from './../partials/FormError.vue';
 
 export default {
     name: 'Login',
+
+    components: {
+        FormError
+    },
+
     data() {
         return {
             email: '',
-            password: ''
+            password: '',
         }
     },
 
@@ -54,7 +64,13 @@ export default {
                 password: this.password
             })
         },
-    }
+    },
+
+    // computed: {
+    //     ...mapGetters({
+    //         errors: 'getErrors'
+    //     }),
+    // }
 }
 </script>
 

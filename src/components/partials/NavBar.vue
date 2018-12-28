@@ -2,9 +2,11 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         
-        <router-link class="navbar-brand" :to="{ name: 'all-galleries' }">All Galleries</router-link>
+        <router-link class="navbar-brand" :to="{ name: 'galleries' }">All Galleries</router-link>
         <router-link v-if="!user" class="navbar-brand" :to="{ name: 'register' }">Register</router-link>
         <router-link v-if="!user" class="navbar-brand" :to="{ name: 'login' }">Log in</router-link>
+        <router-link class="navbar-brand" :to="{ name: 'create' }">Create Gallery</router-link>
+        <router-link class="navbar-brand" :to="{ name: 'my-galleries' }">My Galleries</router-link>
         <a class="navbar-brand" @click="onClickLogout" v-if="user">Log out</a>
         
     </nav>
@@ -13,6 +15,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+// import galleriesService from './../../services/galleries-service.js';
 
 export default {
     name: 'NavBar',
@@ -29,7 +32,9 @@ export default {
         ...mapGetters({
             user: 'getUser'
         }),
-    }
+    },
+
+    // methods: {}
 }
 </script>
 
