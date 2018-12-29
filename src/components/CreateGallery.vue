@@ -5,10 +5,10 @@
         <form @submit.prevent="onSubmit">
             <div class="form-group">
                 <label>Title</label>
-                <input 
+                <input
+                    class="form-control"
                     v-model="gallery.title"
                     type="text" 
-                    class="form-control" 
                     placeholder="Title"
                     minlength="2"
                     maxlength="255"
@@ -18,10 +18,10 @@
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea 
+                <textarea
+                    class="form-control"
                     v-model="gallery.description"
-                    type="text" 
-                    class="form-control" 
+                    type="text"  
                     placeholder="Description"
                     maxlength="1000"
                 >
@@ -31,16 +31,17 @@
             <div class="form-group" v-for="(num, index) in count" :key="index">
                 <label>Image URL</label>
                 <input
+                    class="form-control"
                     v-model="gallery.images[index].url"
                     type="url"
-                    class="form-control"
                     placeholder="Image URL"
+                    maxlength="255"
                     required
                 >
 
-                <button 
-                    type="button"
+                <button
                     class="btn btn-dark btn-sm"
+                    type="button"
                     @click="deleteInput(index)"
                     :disabled="count == 1"
                 >
@@ -49,8 +50,8 @@
             </div>
 
             <button
-                type="button"
                 class="btn btn-dark btn-sm"
+                type="button"
                 @click="addInput"
             >
                 Add Url
@@ -86,6 +87,7 @@ export default {
             galleriesService.create(this.gallery)
                 .then(() => {
                     this.$router.push({ name: 'my-galleries' });
+                    this.gallery = {};
                 })
         },
 

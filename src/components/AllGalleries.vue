@@ -15,7 +15,10 @@
             <router-link :to="{ name: 'gallery', params: { id: gallery.id } }">{{gallery.title}}</router-link>
             <p>Description: {{gallery.description}}</p>
             <!--router link ide ovde-->
-            <p v-if="gallery.user">Author: {{gallery.user.first_name}} {{gallery.user.last_name}}</p>
+            <router-link v-if="gallery.user" :to="{ name: 'author-galleries', params: { id: gallery.user.id } }">
+                {{gallery.user.first_name}} {{gallery.user.last_name}}
+            </router-link>
+            <!-- <p v-if="gallery.user">Author: {{gallery.user.first_name}} {{gallery.user.last_name}}</p> -->
             <p>Created at: {{gallery.created_at}}</p>
                 
             <img v-if="gallery.images[0]" :src="gallery.images[0].url">
@@ -27,7 +30,6 @@
 </template>
 
 <script>
-// import SingleGallery from './SingleGallery.vue';
 import galleriesService from './../services/galleries-service.js';
 
 export default {

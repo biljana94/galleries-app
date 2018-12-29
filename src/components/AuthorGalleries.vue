@@ -29,7 +29,6 @@ export default {
     },
 
     beforeRouteEnter(to, from, next) {
-        
         galleriesService.getAuthorGalleries(Number(to.params.id)) //u ruti imam id autora i odatle izvlacim id, kastujem user.id
             .then(response => {
                 // console.log(response)

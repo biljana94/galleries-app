@@ -1,15 +1,19 @@
 <template>
-
+<div>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         
         <router-link class="navbar-brand" :to="{ name: 'galleries' }">All Galleries</router-link>
         <router-link v-if="!user" class="navbar-brand" :to="{ name: 'register' }">Register</router-link>
         <router-link v-if="!user" class="navbar-brand" :to="{ name: 'login' }">Log in</router-link>
-        <router-link class="navbar-brand" :to="{ name: 'create' }">Create Gallery</router-link>
-        <router-link class="navbar-brand" :to="{ name: 'my-galleries' }">My Galleries</router-link>
+        <router-link v-if="user" class="navbar-brand" :to="{ name: 'create' }">Create Gallery</router-link>
+        <router-link v-if="user" class="navbar-brand" :to="{ name: 'my-galleries' }">My Galleries</router-link>
         <a class="navbar-brand" @click="onClickLogout" v-if="user">Log out</a>
         
     </nav>
+
+    
+
+</div>
 
 </template>
 
@@ -43,7 +47,12 @@ export default {
     color: white !important;
 }
 
-.navbar .navbar-brand router-link:hover {
-    color: #cc33ff;
+.navbar .navbar-brand:hover {
+    color: #cc33ff !important;
 }
+
+.navbar .navbar-brand {
+    cursor: default;
+}
+
 </style>

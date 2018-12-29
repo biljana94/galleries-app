@@ -21,6 +21,7 @@ const routes = [
     { path: '/my-galleries', component: MyGalleries, name: 'my-galleries', meta: { auth: true } },
     { path: '/authors/:id', component: AuthorGalleries, name: 'author-galleries' },
 ];
+//Route::delete('/comments/{id}', 'CommentsController@destroy');
 
 const router = new VueRouter({
     mode: 'history',
