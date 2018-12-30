@@ -52,6 +52,8 @@ class AuthService {
     setLoginData(data) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
+        // localStorage.setItem('id', data.user.id);
+        // console.log(data.user.id)
         this.setAuthHeaders(data.token);
     }
 }

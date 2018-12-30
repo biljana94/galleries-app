@@ -32,6 +32,10 @@ class GalleriesService {
         return http.get(`authors/${id}`, { params: { page } })
             .then(({ data }) => data)
     }
+
+    // deleteG(id) {
+    //     return http.delete(`galleries/${id}`);
+    // }
 }
 
 const galleriesService = new GalleriesService();

@@ -1,7 +1,5 @@
 <template>
-    
-
-    <form @submit.prevent="onSubmitForm">
+    <form class="col-md-6" @submit.prevent="onSubmitForm">
         <h1 class="h3 mb-3 font-weight-normal">Please log in</h1>
 
         <div class="form-group">
@@ -9,7 +7,7 @@
             <input 
                 type="text" 
                 class="form-control" 
-                placeholder="Enter email" 
+                placeholder="Email" 
                 autofocus="" 
                 v-model="email"
             >
@@ -24,7 +22,7 @@
             <input 
                 type="password" 
                 class="form-control" 
-                placeholder="Enter password" 
+                placeholder="Password" 
                 v-model="password"
             >
             <!-- <form-error v-if="errors.password">
@@ -32,9 +30,8 @@
             </form-error> -->
         </div>
         
-        <button class="btn btn-dark" type="submit">Log in</button>
+        <button class="btn btn-outline-dark" type="submit">Log in</button>
     </form>
-
 </template>
 
 <script>
@@ -75,5 +72,12 @@ export default {
 </script>
 
 <style>
+form {
+    margin: 0 auto;
+}
 
+form h1 {
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+}
 </style>

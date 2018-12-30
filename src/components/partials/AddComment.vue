@@ -1,13 +1,14 @@
 <template>
     
     <div class="comment-form">
-        <h5>Add Comment</h5>
+        <h5>Add your comment:</h5>
         <div class="form-group">
             <textarea 
                 class="form-control"
                 v-model="content"
-                @keydown.enter.prevent="onSubmitAddComment"
+                @keyup.enter="onSubmitAddComment"
                 maxlength="1000"
+                rows="5"
                 required        
             ></textarea>
         </div>
@@ -39,7 +40,7 @@ export default {
 
     methods: {
         onSubmitAddComment() {
-            console.log(this.content)
+            // console.log(this.content)
             if(this.content) {
                 this.$emit('submitComment', this.content);
                 this.content = ''; //ispraznili smo textareu
@@ -51,5 +52,11 @@ export default {
 </script>
 
 <style>
+.comment-form {
+    margin: 2rem auto 1rem auto;
+}
 
+.comment-form .form-group .form-control {
+    border: 1px solid #343a40;
+}
 </style>

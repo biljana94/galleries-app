@@ -1,12 +1,13 @@
 <template>
     <div>
-        <form @submit.prevent="onSubmitRegister">
+        <form class="col-md-6" @submit.prevent="onSubmitRegister">
+            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
             <div class="form-group">
                 <label>First Name</label>
                 <input
                     class="form-control" 
                     type="text" 
-                    placeholder="Enter first name" 
+                    placeholder="First name" 
                     v-model="user.first_name"
                     required
                 >
@@ -17,7 +18,7 @@
                 <input 
                     class="form-control" 
                     type="text" 
-                    placeholder="Enter last name" 
+                    placeholder="Last name" 
                     v-model="user.last_name"
                     required
                 >
@@ -28,7 +29,7 @@
                 <input 
                     class="form-control" 
                     type="email" 
-                    placeholder="Enter email" 
+                    placeholder="Email" 
                     v-model="user.email"
                     required
                 >
@@ -40,8 +41,8 @@
                 <input 
                     class="form-control" 
                     type="password" 
-                    placeholder="Enter password" 
-                    minlength="8"
+                    placeholder="Password"
+                    pattern="(?=.*\d).{8,}"
                     v-model="user.password"
                     required
                 >
@@ -68,7 +69,6 @@
                         v-model="user.conditions"
                         required
                     >
-
                     <label 
                         class="form-check-label"
                     >
@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-dark">Register</button>
+            <button type="submit" class="btn btn-outline-dark">Register</button>
         </form>
     </div>
 </template>
@@ -109,5 +109,11 @@ export default {
 </script>
 
 <style>
+form {
+    margin: 0 auto;
+}
 
+form h1 {
+    padding-top: 2rem;
+}
 </style>

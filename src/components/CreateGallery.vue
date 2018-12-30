@@ -2,7 +2,7 @@
     <div>
         <h3>Create New Gallery</h3>
 
-        <form @submit.prevent="onSubmit">
+        <form class="col-md-8" @submit.prevent="onSubmit">
             <div class="form-group">
                 <label>Title</label>
                 <input
@@ -24,6 +24,7 @@
                     type="text"  
                     placeholder="Description"
                     maxlength="1000"
+                    rows="10"
                 >
                 </textarea>
             </div>
@@ -40,7 +41,7 @@
                 >
 
                 <button
-                    class="btn btn-dark btn-sm"
+                    class="btn btn-danger btn-sm button-delete"
                     type="button"
                     @click="deleteInput(index)"
                     :disabled="count == 1"
@@ -50,16 +51,17 @@
             </div>
 
             <button
-                class="btn btn-dark btn-sm"
+                class="btn btn-secondary btn-sm button-input"
                 type="button"
                 @click="addInput"
             >
                 Add Url
             </button>
-                
-            <button type="submit" class="btn btn-dark">Create</button>
-            <router-link class="btn btn-dark" :to="{ name: 'my-galleries' }">Cancel</router-link>
 
+            <div class="row justify-content-md-center">  
+                <button type="submit" class="btn btn-outline-dark">Create</button>
+                <router-link class="btn btn-outline-danger" :to="{ name: 'my-galleries' }">Cancel</router-link>
+            </div>
         </form>
     </div>    
 </template>
@@ -107,5 +109,30 @@ export default {
 </script>
 
 <style>
+h3 {
+    text-align: center;
+    margin-top: 5rem;
+}
 
+form {
+    margin: 0 auto;
+}
+
+form .button-input {
+    display: block;
+    margin: 0 auto;
+}
+
+form .button-delete {
+    display: block;
+    margin: 0.5rem auto 0 auto;
+}
+
+form .row {
+    margin-top: 1.5rem;
+}
+
+form .row .btn {
+    margin: 0 0.5rem;
+}
 </style>
